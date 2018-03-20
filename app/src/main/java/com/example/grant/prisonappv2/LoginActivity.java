@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebase;
 
 
-    //TODO remove this comment its a test to resolve github issue
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         loginPassword = findViewById(R.id.login_password);
         loginbtn = findViewById(R.id.login_btn);
         progress = new ProgressBar(this);
-        progress.setProgress(1);
+
 
     }
 
@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+    //login fully validate somehow still takes blank strings
     public void login(View v){
         String email = loginEmail.getText().toString().trim();
         String password = loginPassword.getText().toString().trim();
@@ -74,9 +75,6 @@ public class LoginActivity extends AppCompatActivity {
     public void showToast(String message) {
         Toast toast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
         toast.show();
-
-
-
     }
 
 
