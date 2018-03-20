@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "77693414941",
+    "firebase_url": "https://prisonappv2.firebaseio.com",
+    "project_id": "prisonappv2",
+    "storage_bucket": "prisonappv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77693414941:android:ae314d4f5899e78b",
+        "android_client_info": {
+          "package_name": "com.example.grant.prisonappv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77693414941-8gnpsghdnspnbqvsmf2fc6f57kf2cnbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfDT3rTi013D6llT8MFb7BFUyuM3PAzOo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
