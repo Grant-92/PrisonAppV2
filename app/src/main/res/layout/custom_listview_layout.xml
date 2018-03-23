@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/IDTV"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/PrisonerPic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="false"
+        android:contentDescription="@string/todo"
+        app:srcCompat="@drawable/applogo" />
+
+    <TextView
+        android:id="@+id/idTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@+id/nameSubText"
+        android:text="@string/id_here"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        tools:text="placeholder text" />
+
+    <TextView
+        android:id="@+id/nameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/chargeTV"
+        android:layout_below="@+id/idTV"
+        android:text="@string/name_here"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        tools:text="placeholder text" />
+
+    <TextView
+        android:id="@+id/chargeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sentenceTV"
+        android:layout_below="@+id/nameTV"
+        android:text="@string/charge_here"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        tools:text="placeholder text" />
+
+    <TextView
+        android:id="@+id/sentenceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sentenceSubText"
+        android:layout_alignBottom="@+id/sentenceSubText"
+        android:layout_marginStart="19dp"
+        android:layout_toEndOf="@+id/sentenceSubText"
+        android:text="@string/sentence_here"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        tools:text="placeholder text" />
+
+    <TextView
+        android:id="@+id/idSubtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/idTV"
+        android:layout_alignBottom="@+id/idTV"
+        android:layout_toEndOf="@+id/PrisonerPic"
+        android:text="@string/id"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:text="ID:" />
+
+    <TextView
+        android:id="@+id/nameSubText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idSubtext"
+        android:layout_toEndOf="@+id/PrisonerPic"
+        android:layout_toStartOf="@+id/nameTV"
+        android:text="@string/name"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:text="Name:" />
+
+    <TextView
+        android:id="@+id/chargeSubText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameSubText"
+        android:layout_toEndOf="@+id/PrisonerPic"
+
+        android:layout_toStartOf="@+id/nameTV"
+        android:text="@string/charge"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:text="Charge:" />
+
+    <TextView
+        android:id="@+id/sentenceSubText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chargeTV"
+        android:layout_toEndOf="@+id/PrisonerPic"
+        android:text="@string/sentence"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:text="Sentence:" />
+</RelativeLayout>

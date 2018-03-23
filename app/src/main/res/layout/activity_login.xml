@@ -23,7 +23,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.018"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/applogo" />
+
 
     <EditText
         android:id="@+id/login-email"
@@ -34,11 +35,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorAccent"
+        android:drawableLeft="@drawable/ic_action_person"
+        android:drawableStart="@drawable/ic_action_person"
         android:ems="10"
         android:hint="@string/e_mail"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         android:singleLine="true"
+        android:textAlignment="textStart"
         android:textColor="#fff"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login-logo"
         app:layout_constraintVertical_bias="0.036"
-        />
+        tools:ignore="RtlHardcoded" />
 
     <EditText
         android:id="@+id/login-password"
@@ -58,11 +62,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorAccent"
+        android:drawableLeft="@drawable/ic_action_lock"
+        android:drawableStart="@drawable/ic_action_lock"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
         android:singleLine="true"
+        android:textAlignment="textStart"
         android:textColor="#fff"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +77,8 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login-email"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.04"
+        tools:ignore="RtlHardcoded" />
 
 
     <Button
@@ -96,5 +104,20 @@
         app:layout_constraintTop_toBottomOf="@+id/login-password"
         app:layout_constraintVertical_bias="0.096"
         app:layout_goneMarginBottom="25dp" />
+
+    <ProgressBar
+        android:id="@+id/login-progress"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="336dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/common_google_signin_btn_text_dark_focused"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

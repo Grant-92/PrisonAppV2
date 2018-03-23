@@ -22,5 +22,43 @@
     <string name="e_mail">E-Mail</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
+    <string name="title_activity_test">test</string>
+
+
+    <string name="home">Home</string>
+    <string name="add_new_prisoner">Add New Prisoner</string>
+    <string name="update_prisoner_details">Update Prisoner Details</string>
+    <string name="search_prisoners">Search Prisoners</string>
+    <string name="settings">Settings</string>
+    <string name="log_out">Log Out</string>
+    <string name="delete_prisoners">Delete Prisoners</string>
+
+
+    <string name="open"></string>
+    <string name="close"></string>
+    <string name="id_here" />
+    <string name="name_here" />
+    <string name="sentence" />
+    <string name="charge" />
+    <string name="name" />
+    <string name="id" />
+    <string name="sentence_here" />
+    <string name="charge_here" />
+    <string name="Add_User" />
+    <string name="add_user">Add User</string>
     <string name="todo">TODO</string>
+    <string name="submit">Submit</string>
+    <string name="reset">reset</string>
+    <string name="seclevel">SecLevel</string>
+    <string name="charge_description">Charge Description</string>
+    <string name="age">Age</string>
+
+
+
+    <array name="spinnerLevels">
+        <item>Max</item>
+        <item>Med</item>
+        <item>Min</item>
+    </array>
+
 </resources>

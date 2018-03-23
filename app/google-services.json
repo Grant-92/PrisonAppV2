@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "77693414941-kq8crgenk2k1i4rk07joacso1cnpvc7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.grant.prisonappv2",
+            "certificate_hash": "a890b5e735e084d577c040a410eaa0494e4210e6"
+          }
+        },
+        {
           "client_id": "77693414941-8gnpsghdnspnbqvsmf2fc6f57kf2cnbp.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77693414941-8gnpsghdnspnbqvsmf2fc6f57kf2cnbp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

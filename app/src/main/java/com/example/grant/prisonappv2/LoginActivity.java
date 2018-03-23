@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         loginEmail = findViewById(R.id.login_email);
         loginPassword = findViewById(R.id.login_password);
         loginbtn = findViewById(R.id.login_btn);
-        progress = new ProgressBar(this);
+        progress = findViewById(R.id.login_progress);
 
 
     }
@@ -49,10 +49,12 @@ public class LoginActivity extends AppCompatActivity {
 
     //login fully validate somehow still takes blank strings
     public void login(View v){
+        progress.setVisibility(View.VISIBLE);
         String email = loginEmail.getText().toString().trim();
         String password = loginPassword.getText().toString().trim();
 
         if(TextUtils.isEmpty(loginEmail.getText()) || TextUtils.isEmpty(loginPassword.getText())){
+            progress.setVisibility(View.INVISIBLE);
             showToast("Enter a valid Email and Password");
         }else {
             firebase.signInWithEmailAndPassword(email, password)
@@ -64,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent loggedIn = new Intent(getApplicationContext(), Second_Activity.class);
                                 startActivity(loggedIn);
                             } else {
+                                progress.setVisibility(View.INVISIBLE);
                                 showToast("Invalid Login Email or Password try Again");
                             }
                         }

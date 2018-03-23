@@ -4,4 +4,8 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
     <string name="todo">TODO</string>
+    <string name="charge">Charge</string>
+    <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="sentence">Sentence</string>
 </resources>
