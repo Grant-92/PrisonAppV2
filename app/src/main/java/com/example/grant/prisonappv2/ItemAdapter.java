@@ -1,46 +1,59 @@
 package com.example.grant.prisonappv2;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Grant on 22/03/2018.
  */
 
-public class ItemAdapter extends BaseAdapter {
+public class ItemAdapter extends ArrayAdapter<Prisoner> {
+
+    private Activity theContext;
+    private List<Prisoner> inmates;
 
 
-    //TODO write the prisoner class and include in the Arraylist + finish this class
-    private  ArrayList<Prisoner> List = new ArrayList<>();
-    Context context;
 
+    public ItemAdapter(Activity theContext, List<Prisoner> inmates){
+        super(theContext, R.layout.custom_listview_layout, inmates);
+        this.theContext = theContext;
+        this.inmates = inmates;
 
-    public ItemAdapter(Context context, ArrayList<Prisoner> list ){
-
-        this.context = context;
-        this.List = list;
-    }
-    @Override
-    public int getCount() {
-        return List.size();
     }
 
+    @NonNull
     @Override
-    public Object getItem(int position) {
-        return null;
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        LayoutInflater inflater = theContext.getLayoutInflater();
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+        View listedItem = inflater.inflate(R.layout.custom_listview_layout, null, true);
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+
+
+        TextView id = listedItem.findViewById(R.id.idTV);
+        TextView name = listedItem.findViewById(R.id.nameTV);
+        TextView charge = listedItem.findViewById(R.id.chargeTV);
+        TextView sentence = listedItem.findViewById(R.id.sentenceTV);
+
+        Prisoner prisoner = inmates.get(position);
+
+        id.setText(prisoner.getId());
+        name.setText(prisoner.getName());
+        charge.setText(prisoner.getCharge());
+        sentence.setText(String.valueOf(prisoner.getSentence()));
+
+        return  listedItem;
+
     }
 }

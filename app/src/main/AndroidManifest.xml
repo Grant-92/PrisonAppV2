@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Second_Activity" />
-        <activity android:name=".AddPrisoner"></activity>
+        <activity android:name=".AddPrisoner" />
+        <activity android:name=".PrisonerDetails"></activity>
     </application>
 
 </manifest>

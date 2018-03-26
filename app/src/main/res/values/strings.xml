@@ -54,7 +54,6 @@
     <string name="age">Age</string>
 
 
-
     <array name="spinnerLevels">
         <item>Max</item>
         <item>Med</item>
