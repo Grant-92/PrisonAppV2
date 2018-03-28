@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Second_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Second_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
@@ -43,10 +44,11 @@ public class Second_Activity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_second);
 
 
-        //TODO continue work for Custom listview ItemAdaptor needs to be wrote replace IA constructor args with whatever handy that comes from firebase
         datalist = findViewById(R.id.dataList);
         databaseReference = FirebaseDatabase.getInstance().getReference("prisoner");
         inmates = new ArrayList<>();
+        datalist.setOnItemClickListener(this);
+
 
 
 
@@ -61,6 +63,8 @@ public class Second_Activity extends AppCompatActivity implements NavigationView
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
 
 
     @Override
@@ -154,7 +158,23 @@ public class Second_Activity extends AppCompatActivity implements NavigationView
 
         return true;
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //TODO start detailed intent passing the view or postition to determine what is in next view
+        Intent showDetailedActivity = new Intent(getApplicationContext(), detailedActivity.class);
+
+        showDetailedActivity.putExtra("id", inmates.get(position).getId());
+        showDetailedActivity.putExtra("name",inmates.get(position).getName());
+        showDetailedActivity.putExtra("age",inmates.get(position).getAge());
+        showDetailedActivity.putExtra("charge",inmates.get(position).getCharge());
+        showDetailedActivity.putExtra("chargeDes",inmates.get(position).getChargeDescription());
+        showDetailedActivity.putExtra("sentence",inmates.get(position).getSentence());
+        showDetailedActivity.putExtra("seclevel",inmates.get(position).getseclevel());
+        showDetailedActivity.putExtra("picLoc",inmates.get(position).getPic_location());
+
+        startActivity(showDetailedActivity);
+    }
 }
 
-    //TODO Write methods to display a custom list view and make it clickable into a detailed view
-    //TODO detailed view should have delete and update functions
+

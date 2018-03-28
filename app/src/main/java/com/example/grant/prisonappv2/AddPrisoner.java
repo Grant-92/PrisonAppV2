@@ -4,19 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import java.lang.reflect.Array;
-import java.security.spec.PSSParameterSpec;
 
 public class AddPrisoner extends AppCompatActivity {
 
@@ -46,14 +41,14 @@ public class AddPrisoner extends AppCompatActivity {
 
 
 
-        id = findViewById(R.id.addIDTextView);
+        id = findViewById(R.id.updateIDTextView);
         id.setText(uniqueKey);
-        name = findViewById(R.id.addName);
-        age = findViewById(R.id.addAge);
-        charge = findViewById(R.id.addCharge);
-        chargeDes = findViewById(R.id.addChargeDes);
-        sentence = findViewById(R.id.addSentence);
-        levels = findViewById(R.id.addsecspinneer);
+        name = findViewById(R.id.updateName);
+        age = findViewById(R.id.updateAge);
+        charge = findViewById(R.id.updateCharge);
+        chargeDes = findViewById(R.id.updateChargeDes);
+        sentence = findViewById(R.id.updateSentence);
+        levels = findViewById(R.id.updatesecspinneer);
 
         submit = findViewById(R.id.submitBtn);
         reset = findViewById(R.id.resetBtn);
