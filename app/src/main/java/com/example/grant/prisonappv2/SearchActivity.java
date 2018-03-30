@@ -1,25 +1,25 @@
 package com.example.grant.prisonappv2;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,28 +27,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Second_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
+public class SearchActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
-    private DatabaseReference databaseReference;
-    private ListView datalist;
+    RadioButton name;
+    RadioButton charge;
+    RadioButton chargeDes;
+    RadioButton level;
 
-    List<Prisoner> inmates;
+    ListView datalist;
 
+    EditText seachTerm;
+    Button stringSearchBtn;
+    Button spinnerSearchBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_search);
 
-
-        datalist = findViewById(R.id.dataList);
-        databaseReference = FirebaseDatabase.getInstance().getReference("prisoner");
-        inmates = new ArrayList<>();
-        datalist.setOnItemClickListener(this);
-
+        datalist = findViewById(R.id.result_list);
 
 
 
@@ -62,45 +62,62 @@ public class Second_Activity extends AppCompatActivity implements NavigationView
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+         name = findViewById(R.id.radioName);
+         charge = findViewById(R.id.radioCharge);
+         chargeDes = findViewById(R.id.radioChargeDes);
+         level = findViewById(R.id.radioLevel);
+
+         seachTerm = findViewById(R.id.SearchTerm);
+         stringSearchBtn = findViewById(R.id.stringSeachbtn);
+         spinnerSearchBtn = findViewById(R.id.spinnerSeachbtn);
+
+
+    }
+
+    public void showSearchBox(View v){
+
+        int dialogLayout = R.layout.activity_second;
+
+        //TODO create layouts for the different outcomes here
+
+        if(name.isChecked()){
+            dialogLayout = R.layout.string_search_queries;
+
+        }else if(charge.isChecked()){
+            dialogLayout = R.layout.string_search_queries;
+
+        }else if(chargeDes.isChecked()){
+            dialogLayout = R.layout.string_search_queries;
+
+        }else if (level.isChecked()){
+            dialogLayout = R.layout.spinner_queries;
+
+        }else{
+            Toast.makeText(this, "An error occurred", Toast.LENGTH_SHORT);
+        }
+
+
+
+
+
+
+
+        AlertDialog.Builder build = new AlertDialog.Builder(this);
+        build.setTitle("Search Term");
+        LayoutInflater inflate = getLayoutInflater();
+        View view = inflate.inflate(dialogLayout, null);
+        build.setView(view).show();
+
+
+
     }
 
 
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-
-            //Executes every time something in DB changes
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                //clear here cause i was getting duplicates in the listview sometimes
-                inmates.clear();
-
-                for(DataSnapshot prisonershot: dataSnapshot.getChildren()){
-
-                    Prisoner p = prisonershot.getValue(Prisoner.class);
-
-                    inmates.add(p);
-                }
-
-                ItemAdapter ia = new ItemAdapter(Second_Activity.this, inmates);
-                datalist.setAdapter(ia);
-
-            }
-
-            //Executes on failure to read or write too or from DB
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-                Toast.makeText(getApplicationContext(),"A database Error occurred: Data couldn't be received", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
 
     /**
      * Maakes toggle functional
@@ -136,8 +153,8 @@ public class Second_Activity extends AppCompatActivity implements NavigationView
             Toast.makeText(this, "Your already at the Home screen", Toast.LENGTH_SHORT).show();
         }
         if (ids == R.id.search) {
-            Intent showSearchPrisoner = new Intent(getApplicationContext(), SearchActivity.class);
-            startActivity(showSearchPrisoner);
+            //TODO Intent showSearchPrisoner = new Intent(getApplicationContext(), SearchPrisoners.class);
+            //TODO startActivity(showSearchPrisoner);
         }
         if (ids == R.id.add) {
             Intent showAddPrisoner = new Intent(getApplicationContext(), AddPrisoner.class);
@@ -148,8 +165,8 @@ public class Second_Activity extends AppCompatActivity implements NavigationView
             //TODO startActivity(showAddUser);
         }
         if (ids == R.id.settings) {
-             Intent showSettings = new Intent(getApplicationContext(), Settings.class);
-             startActivity(showSettings);
+            Intent showSettings = new Intent(getApplicationContext(), Settings.class);
+            startActivity(showSettings);
         }
         if (ids == R.id.log_out) {
             Toast.makeText(this, "LOGOUT", Toast.LENGTH_SHORT).show();
@@ -161,23 +178,4 @@ public class Second_Activity extends AppCompatActivity implements NavigationView
 
         return true;
     }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //TODO start detailed intent passing the view or postition to determine what is in next view
-        Intent showDetailedActivity = new Intent(getApplicationContext(), detailedActivity.class);
-
-        showDetailedActivity.putExtra("id", inmates.get(position).getId());
-        showDetailedActivity.putExtra("name",inmates.get(position).getName());
-        showDetailedActivity.putExtra("age",inmates.get(position).getAge());
-        showDetailedActivity.putExtra("charge",inmates.get(position).getCharge());
-        showDetailedActivity.putExtra("chargeDes",inmates.get(position).getChargeDescription());
-        showDetailedActivity.putExtra("sentence",inmates.get(position).getSentence());
-        showDetailedActivity.putExtra("seclevel",inmates.get(position).getseclevel());
-        showDetailedActivity.putExtra("picLoc",inmates.get(position).getPic_location());
-
-        startActivity(showDetailedActivity);
-    }
 }
-
-

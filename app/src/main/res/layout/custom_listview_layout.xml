@@ -5,7 +5,7 @@
     android:id="@+id/customRL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/authui_colorActivated">
+    android:background="@color/colorPrimaryDark">
 
     <ImageView
         android:id="@+id/PrisonerPic"
@@ -15,8 +15,7 @@
         android:layout_alignParentTop="true"
         android:adjustViewBounds="false"
         android:contentDescription="@string/todo"
-        android:elevation="20dp"
-        app:srcCompat="@drawable/applogo" />
+        app:srcCompat="@drawable/prisonerplaceholder" />
 
     <TextView
         android:id="@+id/idTV"

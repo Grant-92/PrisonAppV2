@@ -25,7 +25,10 @@
         </activity>
         <activity android:name=".Second_Activity" />
         <activity android:name=".AddPrisoner" />
-        <activity android:name=".detailedActivity"></activity>
+        <activity android:name=".detailedActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".settings" />
+        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>
